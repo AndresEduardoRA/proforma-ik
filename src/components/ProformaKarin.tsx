@@ -32,6 +32,7 @@ export default function ProformaKarins() {
   )
   const [cliente, setCliente] = useState('')
   const [telefono, setTelefono] = useState('')
+  const [numeroSerie, setNumeroSerie] = useState('000001')
 
   const [items, setItems] = useState<Item[]>(
     Array.from({ length: ROWS }, () => ({ ...EMPTY_ITEM })),
@@ -125,8 +126,8 @@ export default function ProformaKarins() {
         {/* =========================
             HOJA
         ========================== */}
-         <div
-      className="
+        <div
+          className="
         relative
         overflow-hidden
         rounded-[34px]
@@ -140,7 +141,7 @@ export default function ProformaKarins() {
         print:border-[3px]
         print:shadow-none
       "
-    >
+        >
           {/* =========================
               CONTENIDO
           ========================== */}
@@ -191,11 +192,39 @@ export default function ProformaKarins() {
               </div>
 
               {/* IMAGEN + PRO-FORMA */}
-              <img
-                src="/images/trabajos-imprenta.png"
-                alt="Trabajos de imprenta"
-                className="h-[120px] w-full object-contain"
-              />
+              <div className="flex flex-col items-center">
+                <img
+                  src="/images/trabajos-imprenta.png"
+                  alt="Trabajos de imprenta"
+                  className="h-[120px] w-full object-contain"
+                />
+
+                <div className="mt-[-2px] flex items-start justify-center">
+                  <span className="font-sans text-[18px] font-black text-red-600">
+                    N<sup className="relative -top-[0.15em] text-[11px]">o</sup>
+                  </span>
+
+                  <input
+                    value={numeroSerie}
+                    onChange={(e) => setNumeroSerie(e.target.value)}
+                    aria-label="Número de serie"
+                    className="
+        w-[100px]
+        border-0
+        bg-transparent
+        p-0
+        text-center
+        font-sans
+        text-[18px]
+        font-black
+        tracking-[0.18em]
+        text-red-600
+        outline-none
+        print:text-red-600
+      "
+                  />
+                </div>
+              </div>
             </div>
 
             {/* =========================
