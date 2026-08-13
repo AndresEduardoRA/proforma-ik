@@ -98,8 +98,8 @@ export default function ProformaKarins() {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-yellow-300 via-yellow-400 to-orange-500 p-4 sm:p-6 print:min-h-0 print:bg-white print:p-0">
-      <div className="mx-auto w-full max-w-[820px]">
+    <div className="min-h-screen bg-linear-to-b from-yellow-300 via-yellow-400 to-orange-500 p-4 sm:p-6 print:flex print:min-h-screen print:w-full print:items-center print:justify-center print:bg-linear-to-b print:from-yellow-300 print:via-yellow-400 print:to-orange-500 print:p-0">
+      <div className="flex w-full max-w-[820px] justify-center">
 
         {/* =========================
             CONTROLES
@@ -125,20 +125,22 @@ export default function ProformaKarins() {
         {/* =========================
             HOJA
         ========================== */}
-        <div
-          className="
-            relative
-            overflow-hidden
-            rounded-[34px]
-            border-[5px]
-            border-[#252525]
-            bg-white
-            shadow-2xl
-            print:rounded-none
-            print:border-[3px]
-            print:shadow-none
-          "
-        >
+         <div
+      className="
+        relative
+        overflow-hidden
+        rounded-[34px]
+        border-[5px]
+        border-[#252525]
+        bg-white
+        shadow-2xl
+        print:w-[185mm]
+        print:min-h-[255mm]
+        print:rounded-[18px]
+        print:border-[3px]
+        print:shadow-none
+      "
+    >
           {/* =========================
               CONTENIDO
           ========================== */}
@@ -675,29 +677,36 @@ export default function ProformaKarins() {
           ESTILOS DE IMPRESIÓN
       ========================== */}
       <style>{`
-        @page {
-          size: A4 portrait;
-          margin: 0;
-        }
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
 
-        @media print {
-          html,
-          body {
-            margin: 0 !important;
-            padding: 0 !important;
-            background: white !important;
-          }
+  @media print {
+    html,
+    body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
 
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
+    body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
 
-          input {
-            color: #111 !important;
-          }
-        }
-      `}</style>
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    input {
+      color: #111 !important;
+    }
+  }
+`}</style>
     </div>
   )
 }
