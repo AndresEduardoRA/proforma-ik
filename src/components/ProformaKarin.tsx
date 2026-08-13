@@ -15,8 +15,21 @@ const EMPTY_ITEM: Item = {
 const ROWS = 20
 
 export default function ProformaKarins() {
-  const [mes, setMes] = useState('')
-  const [anio, setAnio] = useState('2026')
+  const fechaActual = new Date()
+
+  const [dia, setDia] = useState(
+    String(fechaActual.getDate()),
+  )
+
+  const [mes, setMes] = useState(
+    fechaActual.toLocaleDateString('es-BO', {
+      month: 'long',
+    }),
+  )
+
+  const [anio, setAnio] = useState(
+    String(fechaActual.getFullYear()),
+  )
   const [cliente, setCliente] = useState('')
   const [telefono, setTelefono] = useState('')
 
@@ -188,61 +201,109 @@ export default function ProformaKarins() {
             ========================== */}
             <div className="mt-4 space-y-2">
 
-              {/* SANTA CRUZ / MES / AÑO */}
-              <div className="flex items-end gap-1 font-serif text-[20px] font-bold leading-none text-[#292929]">
-
+              {/* SANTA CRUZ / DÍA / MES / AÑO */}
+              <div
+                className="
+    flex
+    w-full
+    items-end
+    gap-1
+    font-serif
+    text-[20px]
+    font-bold
+    leading-none
+    text-[#292929]
+  "
+              >
+                {/* SANTA CRUZ */}
                 <span className="shrink-0">
                   Santa Cruz
                 </span>
 
-                <div className="h-[19px] flex-1 border-b border-[#555]" />
+                {/* DÍA */}
+                <input
+                  value={dia}
+                  onChange={(e) => setDia(e.target.value)}
+                  inputMode="numeric"
+                  maxLength={2}
+                  aria-label="Día"
+                  className="
+      h-[25px]
+      w-[180px]
+      shrink-0
+      border-0
+      border-b
+      border-[#555]
+      bg-transparent
+      px-0
+      text-center
+      font-serif
+      text-[19px]
+      font-bold
+      leading-none
+      outline-none
+      focus:border-orange-500
+    "
+                />
 
-                <span className="shrink-0">
+                {/* MES */}
+                <span className="ml-1 shrink-0">
                   Mes
                 </span>
 
+                {/* NOMBRE DEL MES */}
                 <input
                   value={mes}
                   onChange={(e) => setMes(e.target.value)}
+                  aria-label="Mes"
                   className="
-                    h-[22px]
-                    w-[150px]
-                    border-0
-                    border-b
-                    border-[#555]
-                    bg-transparent
-                    px-1
-                    text-center
-                    font-serif
-                    text-[17px]
-                    font-normal
-                    outline-none
-                    focus:border-orange-500
-                  "
-                  placeholder=""
+      h-[25px]
+      min-w-0
+      flex-1
+      border-0
+      border-b
+      border-[#555]
+      bg-transparent
+      px-1
+      text-center
+      font-serif
+      text-[17px]
+      font-bold
+      capitalize
+      leading-none
+      outline-none
+      focus:border-orange-500
+    "
                 />
 
+                {/* AÑO */}
                 <input
                   value={anio}
                   onChange={(e) => setAnio(e.target.value)}
+                  inputMode="numeric"
+                  maxLength={4}
+                  aria-label="Año"
                   className="
-                    h-[22px]
-                    w-[65px]
-                    border-0
-                    border-b
-                    border-[#555]
-                    bg-transparent
-                    px-1
-                    text-center
-                    font-serif
-                    text-[19px]
-                    font-bold
-                    outline-none
-                    focus:border-orange-500
-                  "
+      h-[25px]
+      w-[64px]
+      shrink-0
+      border-0
+      border-b
+      border-[#555]
+      bg-transparent
+      px-1
+      text-center
+      font-serif
+      text-[19px]
+      font-bold
+      leading-none
+      outline-none
+      focus:border-orange-500
+    "
                 />
 
-                <div className="h-[19px] w-[45px] border-b border-[#555]" />
+                {/* PEQUEÑA LÍNEA FINAL */}
+                {/* <div className="h-[19px] w-[35px] shrink-0 border-b border-[#555]" /> */}
               </div>
 
               {/* CLIENTE / TELEFONO */}
